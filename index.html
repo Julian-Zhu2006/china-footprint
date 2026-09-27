@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>足迹</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="app">
+    <section class="stage">
+      <div class="map-frame">
+        <svg id="map" role="img" aria-label="中国地级行政区地图"></svg>
+        <p class="caption" id="caption">
+          <strong id="cap-name">移到城市上</strong>
+          <span id="cap-sub">点击记录，再点一次取消</span>
+        </p>
+        <div class="zoom-tools">
+          <button type="button" id="zoom-in">放大</button>
+          <button type="button" id="zoom-out">缩小</button>
+          <button type="button" id="zoom-reset">复位</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="panel">
+      <header class="panel-head">
+        <p class="kicker">中国</p>
+        <h1>足迹</h1>
+        <p class="lead">以地级市为单位。点地图上的一块，记下你去过的地方。</p>
+      </header>
+
+      <div class="stats" id="stats"></div>
+
+      <label class="search">
+        <span>查找</span>
+        <input id="search" type="search" placeholder="扬州、拉萨、阿里地区" autocomplete="off">
+      </label>
+
+      <div class="filters" role="tablist">
+        <button type="button" class="chip is-active" data-filter="all">全部</button>
+        <button type="button" class="chip" data-filter="been">已去过</button>
+        <button type="button" class="chip" data-filter="not">还没去</button>
+      </div>
+
+      <label class="dim">
+        <input id="dim" type="checkbox">
+        <span>淡化还没去过的地方</span>
+      </label>
+
+      <div class="actions">
+        <button type="button" id="export">导出</button>
+        <button type="button" id="import">导入</button>
+        <button type="button" id="clear">清空</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+      </div>
+      <p class="status" id="status"></p>
+
+      <section class="inset-block">
+        <div class="inset-label">
+          <span>南海诸岛</span>
+          <span>三沙市在这里点</span>
+        </div>
+        <svg id="inset" role="img" aria-label="南海诸岛"></svg>
+      </section>
+
+      <div class="list" id="list"></div>
+      <p class="note">直辖市、香港、澳门、台湾各按一处计算。海南、新疆另有由省区直辖的县和县级市，留在地图上，避免那些地方空着。记录保存在这台浏览器里。边界来自阿里云 DataV GeoAtlas。</p>
+    </aside>
+  </div>
+  <script src="data/map.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
